@@ -1,11 +1,14 @@
 package models
 
-type UserModel struct {
-	ID        uint
-	Username  string
-	Email     *string
-	FirstName string
-	LastName  string
-	CreatedAt int
-	LastLogin int
+import (
+	"gorm.io/gorm"
+)
+
+type User struct {
+	gorm.Model
+	Username  string `json:"username"`
+	Email     string `json:"email"`
+	FirstName string `json:"firstname"`
+	LastName  string `json:"lastname"`
+	Age       int    `json:"age"`
 }
