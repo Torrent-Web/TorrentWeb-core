@@ -1,9 +1,6 @@
 package config
 
 import (
-	"fmt"
-
-	"github.com/Torrent-Web/TorrentWeb-core/src/app/models"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -13,13 +10,8 @@ func DatabaseConfig() {
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
-		fmt.Println(err)
+		panic("[FAILED] to connect to the database " + err.Error())
 	}
 
-	db.AutoMigrate(&models.User{})
-	db.Set("gorm:table_options", "ENGINE=Distributed(cluster, default, hits)").AutoMigrate(&models.User{})
-	db.Create(&user)
-	db.Find(&user, "id = ?", 10)
-	var users = []models.User{user1, user2, user3}
-	db.Create(&users)
+	defer db.Close()
 }
