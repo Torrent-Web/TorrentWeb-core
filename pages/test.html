@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- <div class="container"> -->
+    <!-- code here -->
+    <div class="menu">
+        <ul class="menu-list">
+            <li class="menu-item context-buttons">
+                <button href="#" class="context-button">
+                    <svg viewBox="0 0 16 16">
+                        <path d="M16,7H3.8l5.6-5.6L8,0L0,8l8,8l1.4-1.4L3.8,9H16V7z"></path>
+                        </svg>
+                    </button>
+                <button class="context-button">
+                    <svg viewBox="0 0 16 16">
+                        <path d="M8,0L6.6,1.4L12.2,7H0v2h12.2l-5.6,5.6L8,16l8-8L8,0z"></path>
+                        </svg>
+                    </button>
+                    <button class="context-button mode-switch">
+                        <svg viewBox="0 0 16 16">
+                            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                            </svg>
+                        </button>
+                        <button class="context-button">
+                            <svg viewBox="0 0 16 16" class="favourite">
+                                <path d="M8,12.2l4.9,3l-1.3-5.6L16,5.8l-5.8-0.5L8,0L5.8,5.3L0,5.8l4.4,3.8l-1.3,5.6L8,12.2z"></path>
+                                </svg>
+                            </button>
+            
+        </li>
+        </ul>
+        <ul class="menu-list">
+            <li class="menu-item"><button class="menu-button">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+
+              
+                <span>Save as... </span>
+                <span>CTRL+S </span>
+                </button></li>
+              
+                <li class="menu-item"><button class="menu-button">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            
+                    <span>Print... </span>
+                    <span>CTRL+P </span>
+                    </button></li>
+        </ul>
+        <ul class="menu-list">
+            <li class="menu-item"><button class="menu-button">
+                <svg ></svg>
+           
+                <span>Select All</span>
+                <span>CTRL+A</span>
+                </button></li>
+
+        </ul>
+        <ul class="menu-list">
+            <li class="menu-item"><button class="menu-button">
+                <svg></svg>
+           
+                <span>View source</span>
+                <span>CTRL+U</span>
+                </button></li>
+            <li class="menu-item"><button class="menu-button">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+
+          
+                <span>Inspect</span>
+                <span>CTRL+SHIFT+I</span>
+                </button></li>
+
+        </ul>
+    </div>
+
+
+
+
+</body>
+<script>
+     $(document).on("contextmenu", function(event) {
+   event.preventDefault();
+   $(".menu")
+     .show()
+     .css({
+       top: event.pageY,
+       left: event.pageX
+     });
+ });
+ $(document).click(function() {
+   if ($(".menu").is(":hover") == false) {
+     $(".menu").fadeOut("fast");
+   };
+ });
+
+window.onload = function loaded(){
+  var modeSwitch = document.querySelector('.mode-switch');
+  modeSwitch.addEventListener('click', function () {                      
+  document.documentElement.classList.toggle('light');
+  modeSwitch.classList.toggle('active');
+  });
+}
+</script>
+<style>
+    *, *:after, *:before {
+  box-sizing: border-box;
+}
+.mode-switch svg path {
+  height: 100%;
+}
+:root {
+    --color-bg-primary: linear-gradient(to right, #9733EE, #571491);
+    --color-bg-primary-offset: #f1f3f7;
+    --color-bg-secondary: #fff;
+    --color-text-primary: #3a3c42;
+    --color-text-primary-offset: #898c94;
+    --color-orange: #FF6347;
+    --color-green: #228B22;
+    --color-purple: #9665c4;
+    --color-black: var(--color-text-primary);
+    --color-red: #d92027;
+    --color-black: #000;
+    --internal-light-dark: #f00;
+  
+}
+.light:root {
+    --color-bg-secondary: #d0d6df;
+    --color-bg-primary: linear-gradient(to right, #da22ff, #9733ee);
+    --color-bg-primary-offset: #f1f3f7;
+    --color-bg-secondary: #fff;
+    --color-text-primary: #3a3c42;
+    --color-text-primary-offset: #898c94;
+    --color-orange: #FF6347;
+    --color-green: #228B22;
+    --color-purple: #9665c4;
+    --color-black: var(--color-text-primary);
+    --color-red: #d92027;
+    --color-black: #000;
+    --internal-light-dark: #f00;
+}
+
+
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+span {
+  color: var(--color-text-primary);
+}
+.is-dark-background{
+  background: var(--color-bg-primary);
+}
+.is-green {
+  color: var(--color-green);
+}
+.is-purple {
+  color: var(--color-purple);
+}
+.is-black {
+  color: var(--color-text-primary);
+}
+.left {
+  text-align: left;
+}
+.center {
+  text-align: center;
+}
+h3 {
+  margin-block-end: 0px;
+}
+.menu {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  background-color: var(--color-bg-secondary);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(64, 64, 64, 0.15);
+  top: 10;
+  left: 10;
+  width: 208px;
+  display: none;
+}
+.menu.settings {
+    width: 300px !important;
+}
+.menu-list {
+  margin: 0;
+  display: block;
+  width: 100%;
+  padding: 8px;
+}
+.menu-list, ul {
+    list-style-type: none;
+}
+.menu-list + .menu-list {
+  border-top: 1px solid #ddd;
+}
+.menu-sub-list {
+  display: none;
+  padding: 8px;
+  background-color: var(--color-bg-secondary);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(64, 64, 64, 0.15);
+  position: absolute;
+  left: 100%;
+  right: 0;
+  z-index: 100;
+  width: 100%;
+  top: 0;
+  flex-direction: column;
+}
+.menu-sub-list:hover {
+  display: flex;
+}
+.menu-item {
+  position: relative;
+}
+.menu-button {
+  font: inherit;
+  color: inherit;
+  outline: none;
+  border: 0;
+  padding: 8px 8px;
+  width: 100%;
+  
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: var(--color-bg-secondary);
+}
+.menu-button:hover {
+  background-color: var(--color-bg-primary-offset);
+}
+.menu-button:hover + .menu-sub-list {
+  display: flex;
+}
+.menu-button:hover svg {
+  stroke: var(--color-text-primary);
+}
+.menu-button:hover svg.fa {
+    color:  var(--color-text-primary);
+  }
+.context-button:hover svg.fa {
+  color:  var(--color-text-primary);
+}
+
+.menu-button svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  stroke: var(--color-text-primary-offset);
+}
+.menu-button svg.fa {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    color: var(--color-text-primary-offset);
+  }
+.context-button svg.fa {
+  height: 30px;
+  margin-right: 10px;
+  color: var(--color-text-primary-offset);
+}
+.menu-button svg:nth-of-type(2) {
+  margin-right: 0;
+  position: absolute;
+  right: 8px;
+}
+.menu-button span:nth-of-type(2) {
+    margin-right: 0;
+    position: absolute;
+    right: 8px;
+    font-size: x-small;
+  }
+  .menu-button span.second{
+    color: var(--color-text-primary-offset);
+    font-size: small;
+    margin-left: 5px;
+  }
+
+  .menu-button.tor span:nth-of-type(1) {
+    color: var(--color-text-primary-offset);
+    font-size: small;
+    margin-left: 5px;
+  }
+.menu-button--delete:hover {
+  color: var(--color-red);
+}
+.menu-button--delete:hover svg:first-of-type {
+  stroke: var(--color-red);
+}
+.menu-button--orange svg:first-of-type {
+  stroke: var(--color-orange);
+  color: var(--color-orange);
+}
+.menu-button--green svg:first-of-type {
+  stroke: var(--color-green);
+}
+.menu-button--purple svg:first-of-type {
+  stroke: var(--color-purple);
+}
+.menu-button--black svg:first-of-type {
+  stroke: var(--color-black);
+}
+.menu-button--checked svg:nth-of-type(2) {
+  stroke: var(--color-purple);
+}
+/* .yeeet*/
+
+.context-buttons {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: space-between;
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+  }
+.context-buttons span {
+    padding-left: 40px;
+    margin-right: 10px;
+}
+.context-button {
+    font: inherit;
+    outline: none;
+    border: 0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: var(--color-bg-secondary);
+  }
+  .context-button:hover {
+    background-color: var(--color-bg-primary-offset);
+  }
+  .context-button:hover + .menu-sub-list {
+    display: flex;
+  }
+  .context-button:hover svg {
+    fill: var(--color-text-primary);
+  }
+  .context-button svg {
+    width: 100%;
+    
+    margin-right: 10px;
+    fill: var(--color-text-primary-offset);
+  }
+  .menu-button svg:nth-of-type(2) {
+    margin-right: 0;
+    position: absolute;
+    right: 8px;
+  }
+
+
+  .settings-button {
+    font: inherit;
+    outline: none;
+    color: inherit;
+    border: 0;
+    height: 20px;
+    border-radius: 8px;
+    background-color: var(--color-bg-secondary);
+  }
+  .settings-button:hover {
+    background-color: var(--color-bg-primary-offset);
+  }
+ 
+  .settings-button svg {
+    width: 100%;
+    height: 100%;
+    margin-right: 10px;
+  }
+
+.break{
+  border-top: 1px solid #ddd;
+}
+.menu-button span.disabled,  .context-button:hover:disabled {
+  color: var(--color-text-primary-offset) ;
+}
+.menu-button:hover:disabled, .context-button:hover:disabled {
+  background-color: var(--color-bg-secondary);
+}
+.tor {
+  padding: 0px 8px!important;
+  font-size: small;
+  
+}
+.tor:hover {
+  background-color: var(--color-bg-secondary);
+}
+.context-button p {
+  height: 10px;
+}
+
+/* break */
+
+.modal-window {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.5);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+.modal-window:target {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-window > div {
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--color-bg-secondary);
+}
+.modal-close {
+  color: var(--color-text-primary);
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 70px;
+  text-decoration: none;
+}
+.modal-close:hover {
+  color: var(--color-text-primary);
+}
+/* Demo Styles */
+
+
+.modal-window div:not(:last-of-type) {
+  margin-bottom: 15px;
+}
+
+.no-link {
+  color: inherit;
+  text-decoration:none; 
+}
+</style>
+</html>
